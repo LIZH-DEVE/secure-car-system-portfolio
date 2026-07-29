@@ -1,0 +1,9 @@
+flowchart LR
+    PC[PC / Web\nAES/SM4与控制] -->|UDP| ESP[ESP32\n透明桥]
+    ESP -->|2 Mbps UART| FPGA[RX50T FPGA\n解密、协议校验、车控事务]
+    FPGA -->|115200 UART CONTROL| STM[STM32\n电机控制、失联停车、STATUS]
+    STM --> MOTOR[四轮电机]
+    STM -->|STATUS| FPGA
+    FPGA -->|加密CAR_RSP| ESP
+    ESP -->|UDP| PC
+
