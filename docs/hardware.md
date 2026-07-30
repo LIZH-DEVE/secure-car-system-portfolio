@@ -1,4 +1,4 @@
-# Hardware Platform
+# 硬件平台说明
 
 ## 概览
 
