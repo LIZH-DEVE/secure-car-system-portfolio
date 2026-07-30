@@ -6,21 +6,38 @@
 
 作品参加第十届全国大学生集成电路创新创业大赛 Robei 企业命题，获华中分赛区二等奖。
 
-系统链路：
+## 系统架构
 
 ```
 PC控制端
-   ↓ Wi-Fi / UDP
+    ↓ Wi-Fi / UDP
 ESP32通信模块
-   ↓ UART
+    ↓ UART
 FPGA处理模块
-   ↓ UART
+    ↓ UART
 STM32控制模块
-   ↓
+    ↓
 电机执行设备
 ```
 
 系统将网络接入、安全事务处理和物理执行进行分层设计，实现从控制请求发送、设备侧处理到状态反馈的闭环流程。
+
+详细架构说明见：
+
+- [Architecture Source](architecture.mmd)
+
+## 硬件平台
+
+系统由以下硬件组成：
+
+- Artix-7 FPGA开发板（XC7A50T）；
+- ESP32 Wi-Fi通信模块；
+- STM32嵌入式控制板；
+- 四轮移动执行平台。
+
+硬件照片和平台说明见：
+
+- [Hardware Description](docs/hardware.md)
 
 ## 系统组成
 
@@ -84,7 +101,18 @@ STM32控制模块
 
 详细测试数据、证据边界和版本说明见：
 
-- [EVIDENCE.md](EVIDENCE.md)
+- [Evidence Summary](EVIDENCE.md)
+
+## 项目开发流程
+
+项目按照以下流程推进：
+
+1. 系统需求分析与模块划分；
+2. PC、ESP32、FPGA、STM32接口设计；
+3. 分模块开发与验证；
+4. 软件、RTL和综合结果联合测试；
+5. 实物环境调试；
+6. 端到端链路验证。
 
 ## 项目边界说明
 
@@ -96,3 +124,4 @@ STM32控制模块
 
 - [Evidence Summary](EVIDENCE.md)
 - [Architecture Source](architecture.mmd)
+- [Hardware Description](docs/hardware.md)
