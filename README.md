@@ -4,6 +4,8 @@
 
 项目以四轮小车作为真实执行载体，将网络接入、密码事务处理和物理控制分配到不同节点，形成由 PC 控制端、ESP32、Artix-7 FPGA 和 STM32 组成的双向闭环系统。仓库的用途是保存可公开的系统架构、硬件平台、设计决策和验证结果，不发布密钥、网络凭据、完整固件、bitstream 或未脱敏日志。
 
+> **关于 GALS 名称**：GALS 是参赛作品的正式命题名称。本公开仓库主要记录端到端控制系统、密码事务集成和分层验证结果，不展开完整时钟域划分、CDC 结构和未脱敏 RTL 细节，因此不以本仓库内容单独证明完整 GALS 实现。
+
 ## 系统架构
 
 ![系统架构](architecture.svg)
@@ -14,6 +16,8 @@
 
 返回链路由 STM32 生成设备状态，FPGA完成状态校验和响应处理，经 ESP32 返回 PC。PC 仅在来源、帧结构、操作码、解密、CRC 和序列号检查通过后更新已确认状态。
 
+当前 `architecture.svg` 是面向公开展示的详细架构图；[`architecture.mmd`](architecture.mmd) 是便于后续编辑的 Mermaid 简化架构源文件，两者表达同一系统关系，但并非逐元素一一对应。
+
 ## 硬件平台
 
 ![硬件平台概览](docs/images/hardware-overview.jpg)
@@ -23,7 +27,7 @@
 - **设备控制节点**：STM32F103 控制板；
 - **执行与供电**：四轮移动底盘、电机驱动与独立电源模块。
 
-硬件照片、接口角色和供电说明见 [Hardware Platform](docs/hardware.md)。
+硬件照片、接口角色和供电说明见 [硬件平台说明](docs/hardware.md)。
 
 ## 模块职责
 
@@ -74,7 +78,7 @@
 3. STM32负责最终物理执行和失联停车，使安全停车不依赖 PC、Wi-Fi 或 FPGA继续工作；
 4. 状态回传以 STM32生成的实际状态为起点，PC不使用“已发送命令”冒充“已执行状态”。
 
-详细说明见 [Design Decisions](docs/design-decisions.md)。
+详细说明见 [关键设计决策](docs/design-decisions.md)。
 
 ## 验证方法
 
@@ -87,7 +91,7 @@
 
 当前公开摘要包括：Python 回归 907 passed、1 skipped；FPGA pytest 73 passed；RTL与综合后 UART 入口到出口 no-force 测试均为 10/10；实现器件为 `xc7a50tfgg484-1`，WNS 0.536 ns、WHS 0.006 ns。较早的资格产物还完成了 AES/SM4 STOP 压力、STM32 静默停车和完整链路失联停车测试。
 
-详细解释见 [Verification Notes](docs/verification.md)，原始摘要见 [Evidence Summary](EVIDENCE.md)。
+详细解释见 [验证方法与证据层级](docs/verification.md)，公开结果见 [验证结果摘要](EVIDENCE.md)，稳定编号见 [公开证据索引](docs/evidence-index.md)。
 
 ## 项目边界
 
@@ -99,8 +103,10 @@
 
 ## 文档索引
 
-- [系统架构源文件](architecture.mmd)
+- [Mermaid 简化架构源文件](architecture.mmd)
 - [硬件平台说明](docs/hardware.md)
 - [关键设计决策](docs/design-decisions.md)
 - [验证方法与证据层级](docs/verification.md)
+- [公开证据索引](docs/evidence-index.md)
 - [验证结果摘要](EVIDENCE.md)
+- [使用说明与权利声明](NOTICE.md)
