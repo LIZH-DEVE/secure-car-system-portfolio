@@ -11,8 +11,8 @@
 | EV-RTL-001 | RTL仿真 | UART入口到UART出口 no-force | 10/10 | 请求从真实UART入口进入并从UART出口返回，未通过强制内部状态绕过数据通路 |
 | EV-POST-001 | 综合后验证 | UART入口到UART出口 no-force | 10/10 | 综合后的通信和事务通路在对应测试中保持有效 |
 | EV-IMPL-001 | 实现 | 目标器件 | `xc7a50tfgg484-1` | 实现结果对应Robei板载Xilinx Artix-7 XC7A50T |
-| EV-IMPL-001 | 时序 | WNS / WHS | 0.536 ns / 0.006 ns | 当前实现报告中的建立和保持裕量均为正值 |
-| EV-IMPL-002 | 实现检查 | black box、NSTD、UCIO、critical warning、DRC error | 均未出现 | 当前实现报告未记录这些阻断项 |
+| EV-IMPL-002 | 时序 | WNS / WHS | 0.536 ns / 0.006 ns | 当前实现报告中的建立和保持裕量均为正值 |
+| EV-IMPL-003 | 实现检查 | black box、NSTD、UCIO、critical warning、DRC error | 均未出现 | 当前实现报告未记录这些阻断项 |
 
 ## 2. 较早资格产物的真实硬件门禁
 
