@@ -1,3 +1,5 @@
+%% Mermaid 简化架构源文件。
+%% 用于快速编辑系统节点和数据方向；README 中的 architecture.svg 为详细展示图，二者并非逐元素一一对应。
 flowchart LR
     PC[PC控制端\n请求构造 / 状态确认] -->|Wi-Fi / UDP| ESP[ESP32\n网络接入 / UART透明桥]
     ESP -->|UART| FPGA[Artix-7 FPGA\n密码处理 / 帧校验 / 车控事务]
